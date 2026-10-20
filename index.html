@@ -1,0 +1,24 @@
+<!DOCTYPE  html>
+<html>
+    <head>
+        <title>expense tracker</title>
+    </head>
+</html>
+<body>
+    <h1> expense tracker </h1>
+    <form id="expense-form">
+    <input type="text" id="name" placeholder="what did you buy?">
+    <input type="number" id="amount" placeholder="amount(ksh)">
+    <label for="category"> choose a category </label>
+    <select id="category" >
+        <option value="housing">housing</option>
+        <option value="transport">transport</option>
+        <option value="food">food</option>
+        <option value="clothing">clothing</option>
+    </select>
+    <button type="submit">Add expense</button>
+    <ul id="expense-list"></ul>
+    </form>
+    <p>Total: Ksh<span id="total">0</span> </p>
+    <script src="app.js"></script>
+</body>
