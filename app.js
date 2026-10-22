@@ -15,5 +15,26 @@ form.addEventListener("submit",function(event){
     const name = nameInput.value.trim();
     const amount = Number(amountInput.value);
     const category =categoryInput.value ;
-    console.log(name,amount,category);
+    if (name===""||amount<=0||isNaN(amount)){
+        return;
+    }
+    const expense ={
+        id : Date.now(),
+        name:name,
+        amount:amount,
+        category:category,
+    };
+    expenses.push(expense);
+    renderExpenses();
+    form.reset();
 });
+function renderExpenses()
+{
+    list.innerHTML="";
+    expenses.forEach(function(e)
+{
+    const li =document.createElement("li");
+    li.textContent = `${e.name} -ksh${e.amount} (${e.category})` ; 
+    list.appendChild(li);
+});
+};
