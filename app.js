@@ -46,4 +46,6 @@ function renderExpenses()
     li.appendChild(btn);
     list.appendChild(li);
 });
+  const totalAmount = expenses.reduce((sum,e)=>sum+e.amount,0);
+  total.textContent= totalAmount; 
 };
