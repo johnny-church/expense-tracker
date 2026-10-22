@@ -1,5 +1,5 @@
 // we declare expense and give it an empty array/container for objects
-const expenses = [];
+let expenses = [];
 // let  js find the different ids , so we can work with them later
 const form = document.getElementById("expense-form");
 const nameInput = document.getElementById("name");
@@ -35,6 +35,15 @@ function renderExpenses()
 {
     const li =document.createElement("li");
     li.textContent = `${e.name} -ksh${e.amount} (${e.category})` ; 
+    const btn =document.createElement("button");
+    btn.textContent = "Delete";
+    btn.addEventListener("click",function(){
+        expenses= expenses.filter(function (x){
+            return x.id !== e.id;
+        });
+        renderExpenses();
+})
+    li.appendChild(btn);
     list.appendChild(li);
 });
 };
