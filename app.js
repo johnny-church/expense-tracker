@@ -1,5 +1,5 @@
 // we declare expense and give it an empty array/container for objects
-let expenses = [];
+let expenses = JSON.parse(localStorage.getItem("expenses"))||[];
 // let  js find the different ids , so we can work with them later
 const form = document.getElementById("expense-form");
 const nameInput = document.getElementById("name");
@@ -25,9 +25,14 @@ form.addEventListener("submit",function(event){
         category:category,
     };
     expenses.push(expense);
+    saveExpenses();
     renderExpenses();
     form.reset();
 });
+function saveExpenses(){
+    localStorage.setItem("expenses",JSON.stringify(expenses));
+
+}
 function renderExpenses()
 {
     list.innerHTML="";
@@ -41,6 +46,7 @@ function renderExpenses()
         expenses= expenses.filter(function (x){
             return x.id !== e.id;
         });
+        saveExpenses();
         renderExpenses();
 })
     li.appendChild(btn);
@@ -49,3 +55,4 @@ function renderExpenses()
   const totalAmount = expenses.reduce((sum,e)=>sum+e.amount,0);
   total.textContent= totalAmount; 
 };
+renderExpenses();
