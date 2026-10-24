@@ -1,5 +1,6 @@
 // we declare expense and give it an empty array/container for objects
 let expenses = JSON.parse(localStorage.getItem("expenses"))||[];
+let currentFilter = "all";
 // let  js find the different ids , so we can work with them later
 const form = document.getElementById("expense-form");
 const nameInput = document.getElementById("name");
@@ -8,7 +9,6 @@ const categoryInput = document.getElementById("category");
 const list =document.getElementById("expense-list");
 const total = document.getElementById("total");
 
-let count=0;
 
 form.addEventListener("submit",function(event){
     event.preventDefault();
@@ -36,7 +36,18 @@ function saveExpenses(){
 function renderExpenses()
 {
     list.innerHTML="";
-    expenses.forEach(function(e)
+    let visible;
+    if(currentFilter==="all")
+    {
+        visible= expenses;
+    }
+    else{
+        visible = expenses.filter(function(x)
+    {
+        return x.category === currentFilter;
+    })
+    }
+    visible.forEach(function(e)
 {
     const li =document.createElement("li");
     li.textContent = `${e.name} -ksh${e.amount} (${e.category})` ; 
@@ -52,7 +63,13 @@ function renderExpenses()
     li.appendChild(btn);
     list.appendChild(li);
 });
-  const totalAmount = expenses.reduce((sum,e)=>sum+e.amount,0);
+  const totalAmount = visible.reduce((sum,e)=>sum+e.amount,0);
   total.textContent= totalAmount; 
 };
+const filterInput= document.getElementById("filter");
+filterInput.addEventListener("change", function()
+{
+    currentFilter=filterInput.value;
+    renderExpenses();
+});
 renderExpenses();

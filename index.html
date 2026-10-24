@@ -3,7 +3,6 @@
     <head>
         <title>expense tracker</title>
     </head>
-</html>
 <body>
     <h1> expense tracker </h1>
     <form id="expense-form">
@@ -17,8 +16,17 @@
         <option value="clothing">clothing</option>
     </select>
     <button type="submit">Add expense</button>
-    <ul id="expense-list"></ul>
     </form>
+    <label for="filter">show:</label>
+    <select id="filter">
+        <option value="all">all</option>
+        <option value="housing">housing</option>
+        <option value="transport">transport</option>
+        <option value="food">food</option>
+        <option value="clothing">clothing</option>
+    </select>
+    <ul id="expense-list"></ul>
     <p>Total: Ksh<span id="total">0</span> </p>
     <script src="app.js"></script>
 </body>
+ </html>
