@@ -2,19 +2,25 @@
 <html>
     <head>
         <title>expense tracker</title>
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
     </head>
 <body>
-    <h1> expense tracker </h1>
+    <div class="card">
+    <h1> EXPENSE TRACKER </h1>
     <form id="expense-form">
     <input type="text" id="name" placeholder="what did you buy?">
     <input type="number" id="amount" placeholder="amount(ksh)">
-    <label for="category"> choose a category </label>
+    <br>
+    <div>
+    <label for="category">category</label>
     <select id="category" >
         <option value="housing">housing</option>
         <option value="transport">transport</option>
         <option value="food">food</option>
         <option value="clothing">clothing</option>
     </select>
+    </div>
     <button type="submit">Add expense</button>
     </form>
     <label for="filter">show:</label>
@@ -26,7 +32,8 @@
         <option value="clothing">clothing</option>
     </select>
     <ul id="expense-list"></ul>
-    <p>Total: Ksh<span id="total">0</span> </p>
+    <p id="total-line">Total: Ksh<span id="total">0</span> </p>
     <script src="app.js"></script>
+    </div>
 </body>
  </html>
