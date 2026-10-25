@@ -60,6 +60,8 @@ function renderExpenses()
         saveExpenses();
         renderExpenses();
 })
+
+btn.className="delete-button";
     li.appendChild(btn);
     list.appendChild(li);
 });
